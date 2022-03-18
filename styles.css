@@ -1,0 +1,159 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  
+  html {
+    font-size: 10px; /*1rem = 10px*/
+    font-family: "Lato", sans-serif;
+  }
+  
+  body {
+    background-color: #fff;
+    color: #696969;
+    font-size: 1.6rem;
+  }
+  
+  /* container solution: https://stackoverflow.com/questions/40021018/how-to-fix-a-menu-on-the-left-side-and-main-content-to-the-right/40021647 */
+  #container {
+    display: flex;
+    width: 100%;
+    height: 100%;
+  }
+  
+  /* Navigation */
+  #navbar {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    width: 31rem;
+    height: 100%;
+    border-right: 4px solid lightgrey;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 1;
+  }
+  
+  .flex-item {
+    border-top: 1px solid #000;
+    font-size: 2rem;
+  }
+  
+  .flex-item:last-child {
+    height: 100%;
+  }
+  
+  .flex-item:first-child {
+    border-top: none;
+    cursor: initial;
+    font-size: 3rem;
+  }
+  
+  .nav-link {
+    color: #000;
+    text-decoration: none;
+    display: block; /*wanted to take up the whole space of cells (divs) and when clicking on the cell to show the user that part of the page. Before it worked only when the user clicked on the text because there was the content of the a element*/
+    height: 100%;
+    padding: 1.25rem 0; /*moving the padding from divs to a elements now I can click wherever I want and it will lead me to that part of the page*/
+    padding-left: 2.75rem; /*moving the padding from divs to a elements now I can click wherever I want and it will lead me to that part of the page*/
+  }
+  
+  #principal-title {
+    color: black;
+    margin: 1rem 0;
+    padding-left: 2.75rem;
+    font-weight: 500;
+  }
+  
+  /*   right side of the page (technical documentation) */
+  #main-doc {
+    width: 100%;
+    margin-left: 31rem; /*even if I used a display: flex and there are only 2 elements (nav and main), I need to specify this margin as making the nav fixed it took it out of the normal flow of the page. It's like it doesn't exist anymore.This margin = the width of the nav.*/
+    padding: 1.5rem 6rem 3rem 4rem;
+  }
+  
+  .titles {
+    font-size: 2.7rem;
+    color: black;
+    font-weight: 500;
+    margin-top: 1.5rem;
+    margin-bottom: 2rem;
+  }
+  
+  .main-section p,
+  li {
+    margin-bottom: 2rem;
+    line-height: 1.4;
+    text-align: justify;
+  }
+  
+  .main-section li {
+    margin-left: 6rem;
+  }
+  
+  .main-section code {
+    background-color: #dcdcdc;
+    display: inline-block;
+    width: 100%;
+    margin-bottom: 2rem;
+    line-height: 1.5;
+    padding: 2.5rem 1.5rem;
+    font-size: 1.3rem;
+    border-radius: 0.5rem;
+  }
+  
+  #list-in-list {
+    list-style-type: none;
+  }
+  
+  @media (max-width: 700px) {
+    #container {
+      flex-direction: column;
+    }
+    #navbar {
+      border: 0.2rem solid black;
+      width: 100%;
+      height: 25rem;
+      position: absolute;
+      top: 0;
+      overflow: scroll; /*The overflow property specifies what should happen if content overflows an element's box -  www.w3schools.com/cssref/pr_pos_overflow.asp*/
+      overflow-x: hidden; /*body { overflow-y: hidden; Hide vertical scrollbar overflow-x: hidden;  Hide horizontal scrollbar*/
+    }
+    #main-doc {
+      margin-left: 0;
+      position: relative;
+      top: 25rem;
+      padding-left: 1.5rem;
+      padding-right: 1.5rem;
+      padding-bottom: 2rem;
+    }
+    .titles {
+      font-size: 2.4rem;
+      margin-top: 1rem;
+      margin-bottom: 1.2rem;
+    }
+    .main-section li {
+      margin-left: 2.5rem;
+      margin-bottom: 1rem;
+    }
+    .main-section p,
+    code {
+      margin-bottom: 1rem;
+    }
+    code {
+      padding: 1.5rem 1rem;
+    }
+    .flex-item {
+      font-size: 1.75rem;
+    }
+    .nav-link {
+      padding: 1rem 0;
+      padding-left: 1.75rem;
+    }
+    #principal-title {
+      text-align: center;
+      cursor: initial;
+    }
+  }
